@@ -12,7 +12,9 @@ import {
   Rinkeby,
 } from '@usedapp/core'
 import type { AppProps } from 'next/app'
+import Head from 'next/head'
 import React from 'react'
+// import '../css/app.css'
 import { CHAIN_ID, multicallOnLocalhost } from '../config'
 
 const config: Config = {
@@ -44,6 +46,11 @@ const config: Config = {
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <DAppProvider config={config}>
+      <Head>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+      </style> 
+      </Head>
       <ChakraProvider>
         <Component {...pageProps} />
       </ChakraProvider>

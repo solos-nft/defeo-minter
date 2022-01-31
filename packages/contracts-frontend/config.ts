@@ -20,7 +20,7 @@ type SupportedChains =
   | ChainId.ArbitrumRinkeby
   | ChainId.Mumbai
 
-export const CHAIN_ID: SupportedChains = ChainId.Mumbai
+export const CHAIN_ID: SupportedChains = ChainId.Rinkeby
 
 const allConfigs: Record<SupportedChains, ContractsConfig> = {
   [ChainId.Localhost]: {
