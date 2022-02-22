@@ -22,7 +22,6 @@ export const Video = ({ videoSrc, hoverPlay }) => {
 
   async function play(){
     eyeballIndex = getRandomInt();
-    console.log(eyeballIndex, eyeBalls[eyeballIndex]);
     if(!hoverPlay) return;
     videoRef.current.play();
     for (let i = 0; i < 11; i++) {
@@ -33,7 +32,6 @@ export const Video = ({ videoSrc, hoverPlay }) => {
 
   async function pause(){
     eyeballIndex = getRandomInt();
-    console.log(eyeballIndex, eyeBalls[eyeballIndex]);
     if(!hoverPlay) return;
     for (let i = 0; i < 11; i++) {
       videoRef.current.volume = 1 - (0.1 * i);
