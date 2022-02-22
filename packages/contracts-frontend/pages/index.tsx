@@ -28,7 +28,7 @@ const Mint = () => {
           </div>
         </SimpleGrid>
 
-        <Container p={'5rem'} bg="salmon" rounded={10} mb="10rem">
+        <Container p={'5rem'} bg="salmon" rounded={10} mb="10rem" id="mint">
           <Heading as='h2' textAlign={'center'} mb="2rem" color="white" css={{'font-family': 'EB Garamond', 'font-size': '2rem'}}>
             Mint your Drone
           </Heading>
@@ -42,7 +42,7 @@ const Mint = () => {
         </Heading>
 
         <Grid
-          templateColumns={['repeat(1, 0fr)', 'repeat(1, 0fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)', 'repeat(4, 1fr)']}
+          templateColumns={['repeat(1, 0fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)', 'repeat(4, 1fr)', 'repeat(4, 1fr)']}
           gap={0}
         >
           <GridItem rowSpan={1} colSpan={1}>
@@ -112,35 +112,67 @@ const Mint = () => {
             </Flex>
           </GridItem>
         </Grid>
-          <Heading as='h3' pt="10rem" pb={'20px'} css={{'font-family': 'EB Garamond', 'font-size': '2rem'}}>
-            Meet the team
-          </Heading>
-          <Grid
-            templateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}
-            gap={0}
-          >
-            <GridItem rowSpan={1} colSpan={1} bg="grey" position="relative">
-              <Image src='/images/jer.jpg' objectFit='cover'/>
-              <Image src='/images/jer_hover.jpg' transition={'opacity 0.3s'} _hover={{ opacity: 1 }} opacity={0} objectFit='cover' position="absolute" top="0" left="0"/>
-              <Text width={'100%'} fontSize="2xl" color={'white'} textAlign="center" fontWeight={'semibold'} position="absolute" bottom="10px">
-                Jer Palecek
-              </Text>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1} bg="grey" position="relative">
-              <Image src='/images/sam.jpg'objectFit='cover'/>
-              <Image src='/images/sam_hover.jpg' transition={'opacity 0.3s'} _hover={{ opacity: 1 }} opacity={0} objectFit='cover' position="absolute" top="0" left="0"/>
-              <Text width={'100%'} fontSize="2xl" color={'white'} textAlign="center" fontWeight={'semibold'} position="absolute" bottom="10px">
-                Sam Gittis
-              </Text>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1} bg="grey" position="relative">
-              <Image src='/images/ryan.jpg' objectFit='cover'/>
-              <Image src='/images/ryan_hover.jpg' transition={'opacity 0.3s'} _hover={{ opacity: 1 }} opacity={0} objectFit='cover' position="absolute" top="0" left="0"/>
-              <Text width={'100%'} fontSize="2xl" color={'white'} textAlign="center" fontWeight={'semibold'} position="absolute" bottom="10px">
-                Ryan Cole
-              </Text>
-            </GridItem>
-          </Grid>
+        <Heading as='h3' pt="10rem" pb={'10px'} css={{'font-family': 'EB Garamond', 'font-size': '2rem'}}>
+          Matched Audio Visual Features
+        </Heading>
+        <Text fontWeight={'semibold'}>
+          Over 65 audio loops combine to create more than 4 million possible outcomes.
+        </Text>
+        <Text fontWeight={'semibold'} pb={'20px'}>
+          Each loop is paired with a visual feature which also has a possible variant. Rare clips have special items.
+        </Text>
+        <Grid 
+          templateColumns={['repeat(2, 1fr)', 'repeat(3, 1fr)', 'repeat(3, 1fr)', 'repeat(6, 1fr)']}
+          gap={2}
+        >
+          <GridItem rowSpan={1} colSpan={1} paddingLeft={[25, 15]} paddingTop={[25, 15]} backgroundImage={'/images/layers.svg'}>
+            <Video videoSrc="https://palindrones.s3.amazonaws.com/bg.mp4" hoverPlay/>
+          </GridItem>
+          <GridItem rowSpan={1} colSpan={1} paddingLeft={15} paddingTop={15} backgroundImage={'/images/layers.svg'}>
+            <Video videoSrc="https://palindrones.s3.amazonaws.com/fx.mp4" hoverPlay/>
+          </GridItem>
+          <GridItem rowSpan={1} colSpan={1} paddingLeft={15} paddingTop={15} backgroundImage={'/images/layers.svg'}>
+            <Video videoSrc="https://palindrones.s3.amazonaws.com/pad.mp4" hoverPlay/>
+          </GridItem>
+          <GridItem rowSpan={1} colSpan={1} paddingLeft={15} paddingTop={15} backgroundImage={'/images/layers.svg'}>
+            <Video videoSrc="https://palindrones.s3.amazonaws.com/rhythm.mp4" hoverPlay/>
+          </GridItem>
+          <GridItem rowSpan={1} colSpan={1} paddingLeft={15} paddingTop={15} backgroundImage={'/images/layers.svg'}>
+            <Video videoSrc="https://palindrones.s3.amazonaws.com/melody.mp4" hoverPlay/>
+          </GridItem>
+          <GridItem rowSpan={1} colSpan={1} paddingLeft={15} paddingTop={15} backgroundImage={'/images/layers.svg'}>
+            <Video videoSrc="https://palindrones.s3.amazonaws.com/incidental.mp4" hoverPlay/>
+          </GridItem>
+        </Grid>
+        <Heading as='h3' pt="10rem" pb={'20px'} css={{'font-family': 'EB Garamond', 'font-size': '2rem'}}>
+          Meet the team
+        </Heading>
+        <Grid
+          templateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}
+          gap={0}
+        >
+          <GridItem rowSpan={1} colSpan={1} bg="grey" position="relative">
+            <Image src='/images/jer.jpg' objectFit='cover'/>
+            <Image src='/images/jer_hover.jpg' transition={'opacity 0.3s'} _hover={{ opacity: 1 }} opacity={0} objectFit='cover' position="absolute" top="0" left="0"/>
+            <Text width={'100%'} fontSize="2xl" color={'white'} textAlign="center" fontWeight={'semibold'} position="absolute" bottom="10px">
+              Jer Palecek
+            </Text>
+          </GridItem>
+          <GridItem rowSpan={1} colSpan={1} bg="grey" position="relative">
+            <Image src='/images/sam.jpg'objectFit='cover'/>
+            <Image src='/images/sam_hover.jpg' transition={'opacity 0.3s'} _hover={{ opacity: 1 }} opacity={0} objectFit='cover' position="absolute" top="0" left="0"/>
+            <Text width={'100%'} fontSize="2xl" color={'white'} textAlign="center" fontWeight={'semibold'} position="absolute" bottom="10px">
+              Sam Gittis
+            </Text>
+          </GridItem>
+          <GridItem rowSpan={1} colSpan={1} bg="grey" position="relative">
+            <Image src='/images/ryan.jpg' objectFit='cover'/>
+            <Image src='/images/ryan_hover.jpg' transition={'opacity 0.3s'} _hover={{ opacity: 1 }} opacity={0} objectFit='cover' position="absolute" top="0" left="0"/>
+            <Text width={'100%'} fontSize="2xl" color={'white'} textAlign="center" fontWeight={'semibold'} position="absolute" bottom="10px">
+              Ryan Cole
+            </Text>
+          </GridItem>
+        </Grid>
       </Container>
     </Layout>
   )

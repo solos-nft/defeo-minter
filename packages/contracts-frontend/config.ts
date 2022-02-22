@@ -19,6 +19,7 @@ type SupportedChains =
   | ChainId.OptimismKovan
   | ChainId.ArbitrumRinkeby
   | ChainId.Mumbai
+  | ChainId.Mainnet
 
 export const CHAIN_ID: SupportedChains = ChainId.Rinkeby
 
@@ -33,13 +34,21 @@ const allConfigs: Record<SupportedChains, ContractsConfig> = {
   },
   [ChainId.Rinkeby]: {
     deployerAddress: '0xC95d98da541FF990D773F9015996d34663dF0735',
+    tokenAddress: '0x168C738b16928b8A80D20e138a5f57020FDf9F2C', // NFT
+    minterAddress: '0xb865f2D2A98b8B8a1953eb0EB0a14F05D3459F2c', // minter
+    governorAddress: '0xAEb7047ae373a503327DA211F82197A76Db21509', // Governor
+    timelockAddress: '0xE74f84D9043d963Fc6a09De41aE15ff2DD4994ff', // Timelock
+    minterType: MinterType.FixedPriceSequentialMinter,
+  },
+  [ChainId.Mainnet]: {
+    deployerAddress: '0xC95d98da541FF990D773F9015996d34663dF0735',
     tokenAddress: '0x6A675c307F9d7E461351d663a2e4D47720aD59ef',
     minterAddress: '0x7601b5A6C09818F4E4C7d64925B5c5828471B119',
     governorAddress: '0x04411dd13a3A65478F991Fa42256758405FD53C0',
     timelockAddress: '0xF8E0A22Ec95F8B21B903Ca6b8f86D68CF72dd9d1',
     minterType: MinterType.FixedPriceSequentialMinter,
   },
-  [ChainId.OptimismKovan]: {
+  [ChainId.OptimismKovan]: {  
     deployerAddress: '0x8c49f49B3e5A2a469A09f4d8D11546Bc928c08Aa',
     tokenAddress: '0xf2fc15153d69688cb4Ce4869Afc49bcCcB9AFd3E',
     minterAddress: '0x9A179CC9cB50265cf7655eE11DEba68caC91FAa2',
