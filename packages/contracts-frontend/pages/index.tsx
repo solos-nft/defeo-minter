@@ -150,7 +150,7 @@ const Mint = () => {
             Matched Audio Visual Features
           </Heading>
           <Text fontWeight={'semibold'}>
-            Over 65 audio loops combine to create more than 4 million possible outcomes.
+            Over 65 audio loops combine to create more than 11 million possible outcomes.
           </Text>
           <Text fontWeight={'semibold'} pb={'20px'}>
             Each loop is paired with a visual feature which also has a possible variant. Rare clips have special items.
