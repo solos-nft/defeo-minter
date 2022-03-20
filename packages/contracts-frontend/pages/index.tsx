@@ -58,7 +58,7 @@ const Mint = () => {
           
           <Container p={'5rem'} bg="salmon" rounded={10} mb="10rem" id="mint">
             <Heading as='h2' textAlign={'center'} mb="2rem" color="white" css={{'font-family': 'EB Garamond', 'font-size': '2rem'}}>
-              Tokens Drop on April 1nd
+              Tokens Drop on March 31st
             </Heading>
             <Center>
               <Button
