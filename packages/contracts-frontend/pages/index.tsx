@@ -182,7 +182,7 @@ const Mint = () => {
             Meet the team
           </Heading>
           <Grid
-            templateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}
+            templateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(4, 1fr)']}
             gap={0}
           >
             <GridItem rowSpan={1} colSpan={1} bg="grey" position="relative">
@@ -197,6 +197,13 @@ const Mint = () => {
               <Image src='/images/sam_hover.jpg' transition={'opacity 0.3s'} _hover={{ opacity: 1 }} opacity={0} objectFit='cover' position="absolute" top="0" left="0"/>
               <Text width={'100%'} fontSize="2xl" color={'white'} textAlign="center" fontWeight={'semibold'} position="absolute" bottom="10px">
                 Sam Gittis
+              </Text>
+            </GridItem>
+            <GridItem rowSpan={1} colSpan={1} bg="grey" position="relative">
+              <Image src='/images/jana.jpg'objectFit='cover'/>
+              <Image src='/images/jana_hover.jpg' transition={'opacity 0.3s'} _hover={{ opacity: 1 }} opacity={0} objectFit='cover' position="absolute" top="0" left="0"/>
+              <Text width={'100%'} fontSize="2xl" color={'white'} textAlign="center" fontWeight={'semibold'} position="absolute" bottom="10px">
+                Jana Paleckova
               </Text>
             </GridItem>
             <GridItem rowSpan={1} colSpan={1} bg="grey" position="relative">
