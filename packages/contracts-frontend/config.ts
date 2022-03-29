@@ -21,7 +21,7 @@ type SupportedChains =
   | ChainId.Mumbai
   | ChainId.Mainnet
 
-export const CHAIN_ID: SupportedChains = ChainId.Rinkeby
+export const CHAIN_ID: SupportedChains = ChainId.Mainnet
 
 const allConfigs: Record<SupportedChains, ContractsConfig> = {
   [ChainId.Localhost]: {
@@ -34,10 +34,10 @@ const allConfigs: Record<SupportedChains, ContractsConfig> = {
   },
   [ChainId.Rinkeby]: {
     deployerAddress: '0xC95d98da541FF990D773F9015996d34663dF0735',
-    tokenAddress: '0x168C738b16928b8A80D20e138a5f57020FDf9F2C', // NFT
-    minterAddress: '0xb865f2D2A98b8B8a1953eb0EB0a14F05D3459F2c', // minter
-    governorAddress: '0xAEb7047ae373a503327DA211F82197A76Db21509', // Governor
-    timelockAddress: '0xE74f84D9043d963Fc6a09De41aE15ff2DD4994ff', // Timelock
+    tokenAddress: '0x84e401a6e94F48b404cF399648417a6A224565E4', // NFT
+    minterAddress: '0x0cBf26eeBE72aA2659E52e72f4Bc21592BA5672A', // minter
+    governorAddress: '0x6351aDA599411B033eD6766061305027EcF02143', // Governor
+    timelockAddress: '0xD700c424dd74d10a82d5D4bB3de93525946D19BE', // Timelock
     minterType: MinterType.FixedPriceSequentialMinter,
   },
   [ChainId.Mainnet]: {
