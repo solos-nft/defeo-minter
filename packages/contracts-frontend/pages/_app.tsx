@@ -47,9 +47,9 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <DAppProvider config={config}>
       <Head>
-      <style>
-        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
-      </style> 
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="crossOrigin" />
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Syne+Tactile&display=swap" rel="stylesheet" /> 
       </Head>
       <ChakraProvider>
         <Component {...pageProps} />

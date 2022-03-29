@@ -41,6 +41,6 @@ export const Video = ({ videoSrc, hoverPlay }) => {
   }
 
   return (
-    <video loop src={videoSrc} ref={videoRef} onMouseEnter={play} onMouseLeave={pause} style={{width: '100%', 'cursor': `url(${eyeBalls[eyeballIndex]}), auto`}}/>
+    <video loop autoPlay={false} src={videoSrc} ref={videoRef} onMouseEnter={play} onMouseLeave={pause} style={{width: '100%', 'cursor': `url(${eyeBalls[eyeballIndex]})`}}/>
   )
 }

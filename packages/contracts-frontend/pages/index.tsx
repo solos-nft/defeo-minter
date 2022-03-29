@@ -34,10 +34,10 @@ const Mint = () => {
           <SimpleGrid columns={2} minChildWidth={'200px'} spacing={0} mt={'5rem'} mb={'10rem'}>
             <Flex alignItems={'center'}>
               <div>
-                <Heading as='h1' pb={'10px'} css={{'font-family': 'EB Garamond', 'font-size': '5rem !important'}}>
+                <Heading as='h1' pb={'10px'} css={{'fontFamily': 'EB Garamond', 'fontSize': '5rem !important'}}>
                   Palindrones
                 </Heading>
-                <Text fontSize='2xl' css={{'padding-bottom': '20px'}}>
+                <Text fontSize='2xl' css={{'paddingBottom': '20px'}}>
                   A highly unique audio-visual NFT project brought to you by the SOLOS team
                 </Text>
               </div>
@@ -48,7 +48,7 @@ const Mint = () => {
           </SimpleGrid>
 
           {/* <Container p={'5rem'} bg="salmon" rounded={10} mb="10rem" id="mint">
-            <Heading as='h2' textAlign={'center'} mb="2rem" color="white" css={{'font-family': 'EB Garamond', 'font-size': '2rem'}}>
+            <Heading as='h2' textAlign={'center'} mb="2rem" color="white" css={{'fontFamily': 'EB Garamond', 'fontSize': '2rem'}}>
               Mint your Drone
             </Heading>
             <Center>
@@ -57,7 +57,7 @@ const Mint = () => {
           </Container> */}
           
           <Container p={'5rem'} bg="salmon" rounded={10} mb="10rem" id="mint">
-            <Heading as='h2' textAlign={'center'} mb="2rem" color="white" css={{'font-family': 'EB Garamond', 'font-size': '2rem'}}>
+            <Heading as='h2' textAlign={'center'} mb="2rem" color="white" css={{'fontFamily': 'EB Garamond', 'fontSize': '2rem'}}>
               Tokens Drop on March 31st
             </Heading>
             <Center>
@@ -71,7 +71,7 @@ const Mint = () => {
             </Center>
           </Container>
           
-          <Heading as='h3' pb={'20px'} css={{'font-family': 'EB Garamond', 'font-size': '2rem'}}>
+          <Heading as='h3' pb={'20px'} css={{'fontFamily': 'EB Garamond', 'fontSize': '2rem'}}>
             Meet the Drones
           </Heading>
 
@@ -112,7 +112,7 @@ const Mint = () => {
             <GridItem rowSpan={1} colSpan={2} bg='salmon'>
               <Flex justifyContent={'center'} direction={'column'} height={'100%'}>
                 <Flex alignItems={'end'} mb={'0.5rem'}>
-                  <Heading as='h3' size='lg' mr={'1rem'} color='white' width={'30%'} textAlign={'right'} css={{'font-family': 'EB Garamond'}}>
+                  <Heading as='h3' size='lg' mr={'1rem'} color='white' width={'30%'} textAlign={'right'} css={{'fontFamily': 'EB Garamond'}}>
                     86
                   </Heading>
                   <Text width={'70%'} color={'white'} fontWeight={'semibold'}>
@@ -120,7 +120,7 @@ const Mint = () => {
                   </Text>
                 </Flex>
                 <Flex alignItems={'end'} mb={'0.5rem'}>
-                  <Heading as='h3' size='lg' mr={'1rem'} color='white' width={'30%'} textAlign={'right'} css={{'font-family': 'EB Garamond'}}>
+                  <Heading as='h3' size='lg' mr={'1rem'} color='white' width={'30%'} textAlign={'right'} css={{'fontFamily': 'EB Garamond'}}>
                     1:31
                   </Heading>
                   <Text width={'70%'} color={'white'} fontWeight={'semibold'}>
@@ -128,7 +128,7 @@ const Mint = () => {
                   </Text>
                 </Flex>
                 <Flex alignItems={'end'} mb={'0.5rem'}>
-                  <Heading as='h3' size='lg' mr={'1rem'} color='white' width={'30%'} textAlign={'right'} css={{'font-family': 'EB Garamond'}}>
+                  <Heading as='h3' size='lg' mr={'1rem'} color='white' width={'30%'} textAlign={'right'} css={{'fontFamily': 'EB Garamond'}}>
                     11,113,200
                   </Heading>
                   <Text width={'70%'} color={'white'} fontWeight={'semibold'}>
@@ -136,7 +136,7 @@ const Mint = () => {
                   </Text>
                 </Flex>
                 <Flex alignItems={'end'} mb={'0.5rem'}>
-                  <Heading as='h3' size='lg' mr={'1rem'} color='white' width={'30%'} textAlign={'right'} css={{'font-family': 'EB Garamond'}}>
+                  <Heading as='h3' size='lg' mr={'1rem'} color='white' width={'30%'} textAlign={'right'} css={{'fontFamily': 'EB Garamond'}}>
                     323
                   </Heading>
                   <Text width={'70%'} color={'white'} fontWeight={'semibold'}>
@@ -146,7 +146,7 @@ const Mint = () => {
               </Flex>
             </GridItem>
           </Grid>
-          <Heading as='h3' pt="10rem" pb={'10px'} css={{'font-family': 'EB Garamond', 'font-size': '2rem'}}>
+          <Heading as='h3' pt="10rem" pb={'10px'} css={{'fontFamily': 'EB Garamond', 'fontSize': '2rem'}}>
             Matched Audio Visual Features
           </Heading>
           <Text fontWeight={'semibold'}>
@@ -178,7 +178,7 @@ const Mint = () => {
               <Video videoSrc="https://palindrones.s3.amazonaws.com/incidental.mp4" hoverPlay/>
             </GridItem>
           </Grid>
-          <Heading as='h3' pt="10rem" pb={'20px'} css={{'font-family': 'EB Garamond', 'font-size': '2rem'}}>
+          <Heading as='h3' pt="10rem" pb={'20px'} css={{'fontFamily': 'EB Garamond', 'fontSize': '2rem'}}>
             Meet the team
           </Heading>
           <Grid
