@@ -34,18 +34,18 @@ const allConfigs: Record<SupportedChains, ContractsConfig> = {
   },
   [ChainId.Rinkeby]: {
     deployerAddress: '0xC95d98da541FF990D773F9015996d34663dF0735',
-    tokenAddress: '0x84e401a6e94F48b404cF399648417a6A224565E4', // NFT
-    minterAddress: '0x0cBf26eeBE72aA2659E52e72f4Bc21592BA5672A', // minter
-    governorAddress: '0x6351aDA599411B033eD6766061305027EcF02143', // Governor
-    timelockAddress: '0xD700c424dd74d10a82d5D4bB3de93525946D19BE', // Timelock
+    tokenAddress: '0x59078Ff784e16617C8c16c1a94B293758824Cd76', // NFT
+    minterAddress: '0x917e67234f841D27c565581676782DC1dF801ef2', // minter
+    governorAddress: '0x0B6CcF57fE6a4fe8e6A4671CD58BC5CB4E9D95a6', // Governor
+    timelockAddress: '0xA5D64E334B12B25AfB235Db4283e47F84e49fF20', // Timelock
     minterType: MinterType.FixedPriceSequentialMinter,
   },
   [ChainId.Mainnet]: {
     deployerAddress: '0xC95d98da541FF990D773F9015996d34663dF0735',
-    tokenAddress: '0x6A675c307F9d7E461351d663a2e4D47720aD59ef',
-    minterAddress: '0x7601b5A6C09818F4E4C7d64925B5c5828471B119',
-    governorAddress: '0x04411dd13a3A65478F991Fa42256758405FD53C0',
-    timelockAddress: '0xF8E0A22Ec95F8B21B903Ca6b8f86D68CF72dd9d1',
+    tokenAddress: '0x0E69A12554accCb12e4D32a12B807D7Fd6Da220d',
+    minterAddress: '0x91D879CA7957BD39aA90a48B2B937F31CF19e06c',
+    governorAddress: '0x0Dee0D0D4Cf87C54F8e4611B578C6dC5E1B17359',
+    timelockAddress: '0xdDd04BFBe72E86C76c669A3F19Cdbc0391aD4965',
     minterType: MinterType.FixedPriceSequentialMinter,
   },
   [ChainId.OptimismKovan]: {  
