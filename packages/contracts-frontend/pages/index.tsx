@@ -37,7 +37,7 @@ const Mint = () => {
             </div>
           </SimpleGrid>
 
-          {/* <Container p={'5rem'} bg="salmon" rounded={10} mb="10rem" id="mint">
+          <Container p={'5rem'} bg="salmon" rounded={10} mb="10rem" id="mint">
             <Heading as='h2' textAlign={'center'} mb="2rem" color="white" css={{'fontFamily': 'EB Garamond', 'fontSize': '2rem'}}>
               Mint your Drone
             </Heading>
@@ -45,21 +45,6 @@ const Mint = () => {
               <Minter />
             </Center>
           </Container>
-          
-          <Container p={'5rem'} bg="salmon" rounded={10} mb="10rem" id="mint">
-            <Heading as='h2' textAlign={'center'} mb="2rem" color="white" css={{'fontFamily': 'EB Garamond', 'fontSize': '2rem'}}>
-              Tokens Drop on March 31st
-            </Heading>
-            <Center>
-              <Button
-                as="a"
-                w="100%"
-                href='https://discord.gg/v6DK8gWMXh'
-              >
-                Join the Discord for updates
-              </Button>
-            </Center>
-          </Container> */}
           
           <Heading as='h3' pb={'20px'} css={{'fontFamily': 'EB Garamond', 'fontSize': '2rem'}}>
             Meet the Drones
