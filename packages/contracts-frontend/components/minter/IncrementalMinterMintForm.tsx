@@ -10,6 +10,8 @@ import {
   NumberInputStepper,
   VStack,
 } from '@chakra-ui/react'
+import { OpenSeaLink } from '../OpenSeaLink'
+import { RaribleLink } from '../RaribleLink'
 import { formatEther } from 'ethers/lib/utils'
 import React, { useState } from 'react'
 import {
@@ -30,7 +32,7 @@ export const IncrementalMinterMintForm = ({ tokenPrice }) => {
   return (
     <VStack>
       <FormControl>
-        <FormLabel>Tokens to mint (max {maxMintPerTx}):</FormLabel>
+        <FormLabel textAlign="center">Tokens to mint (max {maxMintPerTx}):</FormLabel>
         <NumberInput
           step={1}
           min={0}
@@ -56,8 +58,15 @@ export const IncrementalMinterMintForm = ({ tokenPrice }) => {
       </Button>
 
       <Box>
-        {mintState.status !== 'None' ? `tx status: ${mintState.status}` : ''}
+        {/* {statusMessage()} */}
       </Box>
+      {mintState.status === 'Success' && 
+        <Box>
+          <OpenSeaLink linkText="View on OpenSea" />
+          <br/>
+          <RaribleLink linkText="View on Rarible" />
+        </Box>
+      }
       <Box>
         {mintState.status === 'Exception' ? mintState.errorMessage : ''}
       </Box>

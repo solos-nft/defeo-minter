@@ -1,9 +1,9 @@
-import NextHead from 'next/head' // can come out when using layout
-// import { Layout } from '@create-nft-dao/shared'
-// import { Minter } from '../components/Minter'
+// import NextHead from 'next/head' // can come out when using layout
+import { Layout } from '@create-nft-dao/shared'
+import { Minter } from '../components/Minter'
 import { Video } from '../components/Video'
 import { Center, Container, SimpleGrid, Grid, GridItem, Heading, Text, Flex, Image, Link, Button } from '@chakra-ui/react'
-// import { NavbarLinks } from '../components/NavbarLinks'
+import { NavbarLinks } from '../components/NavbarLinks'
 
 const Mint = () => {
   const layoutProps = {
@@ -12,17 +12,7 @@ const Mint = () => {
   }
 
   return (
-    <>
-      <NextHead>
-        <title>{layoutProps.title}</title>
-        <meta content={layoutProps.description} name="description" />
-        <meta property="og:type" content='website' />
-        <meta property="og:site_name" content={layoutProps.title} />
-        <meta property="og:description" content={layoutProps.description} />
-        <meta property="og:title" content={layoutProps.title} />
-        <meta name="twitter:title" content={layoutProps.title} />
-        <meta name="twitter:description" content={layoutProps.description} />
-      </NextHead>
+    <Layout customMeta={layoutProps} navbarLinks={NavbarLinks}>
       <Container maxWidth="container.xl" pb={'5rem'}> 
         <Container maxW="container.lg" pt={'3rem'}>
           <Flex alignItems={'center'} justifyContent='space-between'>
@@ -47,27 +37,12 @@ const Mint = () => {
             </div>
           </SimpleGrid>
 
-          {/* <Container p={'5rem'} bg="salmon" rounded={10} mb="10rem" id="mint">
+          <Container p={'5rem'} bg="salmon" rounded={10} mb="10rem" id="mint">
             <Heading as='h2' textAlign={'center'} mb="2rem" color="white" css={{'fontFamily': 'EB Garamond', 'fontSize': '2rem'}}>
               Mint your Drone
             </Heading>
             <Center>
               <Minter />
-            </Center>
-          </Container> */}
-          
-          <Container p={'5rem'} bg="salmon" rounded={10} mb="10rem" id="mint">
-            <Heading as='h2' textAlign={'center'} mb="2rem" color="white" css={{'fontFamily': 'EB Garamond', 'fontSize': '2rem'}}>
-              Tokens Drop on March 31st
-            </Heading>
-            <Center>
-              <Button
-                as="a"
-                w="100%"
-                href='https://discord.gg/v6DK8gWMXh'
-              >
-                Join the Discord for updates
-              </Button>
             </Center>
           </Container>
           
@@ -216,7 +191,7 @@ const Mint = () => {
           </Grid>
         </Container>
       </Container>
-    </>
+    </Layout>
   )
 }
 

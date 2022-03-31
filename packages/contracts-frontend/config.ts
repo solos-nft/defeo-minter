@@ -21,7 +21,7 @@ type SupportedChains =
   | ChainId.Mumbai
   | ChainId.Mainnet
 
-export const CHAIN_ID: SupportedChains = ChainId.Rinkeby
+export const CHAIN_ID: SupportedChains = ChainId.Mainnet
 
 const allConfigs: Record<SupportedChains, ContractsConfig> = {
   [ChainId.Localhost]: {
@@ -34,18 +34,18 @@ const allConfigs: Record<SupportedChains, ContractsConfig> = {
   },
   [ChainId.Rinkeby]: {
     deployerAddress: '0xC95d98da541FF990D773F9015996d34663dF0735',
-    tokenAddress: '0x168C738b16928b8A80D20e138a5f57020FDf9F2C', // NFT
-    minterAddress: '0xb865f2D2A98b8B8a1953eb0EB0a14F05D3459F2c', // minter
-    governorAddress: '0xAEb7047ae373a503327DA211F82197A76Db21509', // Governor
-    timelockAddress: '0xE74f84D9043d963Fc6a09De41aE15ff2DD4994ff', // Timelock
+    tokenAddress: '0x59078Ff784e16617C8c16c1a94B293758824Cd76', // NFT
+    minterAddress: '0x917e67234f841D27c565581676782DC1dF801ef2', // minter
+    governorAddress: '0x0B6CcF57fE6a4fe8e6A4671CD58BC5CB4E9D95a6', // Governor
+    timelockAddress: '0xA5D64E334B12B25AfB235Db4283e47F84e49fF20', // Timelock
     minterType: MinterType.FixedPriceSequentialMinter,
   },
   [ChainId.Mainnet]: {
     deployerAddress: '0xC95d98da541FF990D773F9015996d34663dF0735',
-    tokenAddress: '0x6A675c307F9d7E461351d663a2e4D47720aD59ef',
-    minterAddress: '0x7601b5A6C09818F4E4C7d64925B5c5828471B119',
-    governorAddress: '0x04411dd13a3A65478F991Fa42256758405FD53C0',
-    timelockAddress: '0xF8E0A22Ec95F8B21B903Ca6b8f86D68CF72dd9d1',
+    tokenAddress: '0x0E69A12554accCb12e4D32a12B807D7Fd6Da220d',
+    minterAddress: '0x91D879CA7957BD39aA90a48B2B937F31CF19e06c',
+    governorAddress: '0x0Dee0D0D4Cf87C54F8e4611B578C6dC5E1B17359',
+    timelockAddress: '0xdDd04BFBe72E86C76c669A3F19Cdbc0391aD4965',
     minterType: MinterType.FixedPriceSequentialMinter,
   },
   [ChainId.OptimismKovan]: {  
