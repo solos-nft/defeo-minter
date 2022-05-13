@@ -2,7 +2,7 @@
 import { Layout } from '@create-nft-dao/shared'
 import { Minter } from '../components/Minter'
 import { Video } from '../components/Video'
-import { Center, Container, SimpleGrid, Grid, GridItem, Heading, Text, Flex, Image, Link } from '@chakra-ui/react'
+import { Center, Container, Grid, GridItem, Heading, Text, Flex, Image, Link } from '@chakra-ui/react'
 import { NavbarLinks } from '../components/NavbarLinks'
 
 const Mint = () => {
@@ -13,180 +13,87 @@ const Mint = () => {
 
   return (
     <Layout customMeta={layoutProps} navbarLinks={NavbarLinks}>
-      <Container maxWidth="container.xl" pb={'5rem'}> 
-        <Container maxW="container.lg" pt={'3rem'}>
-          <Flex alignItems={'center'} justifyContent='space-between'>
-            <Image src='/images/solos-logo.svg' objectFit='cover' width={100}/>
-            <Text color={'gray.400'}>
-              A <Link href='http://solos.so' target={'_blank'} textDecoration={'underline'} >solos.so</Link> project
-            </Text>
-          </Flex>
-          <SimpleGrid columns={2} minChildWidth={'200px'} spacing={0} mt={'5rem'} mb={'10rem'}>
-            <Flex alignItems={'center'}>
-              <div>
-                <Heading as='h1' pb={'10px'} css={{'fontFamily': 'EB Garamond', 'fontSize': '5rem !important'}}>
-                  Palindrones
-                </Heading>
-                <Text fontSize='2xl' css={{'paddingBottom': '20px'}}>
-                  A highly unique audio-visual NFT project brought to you by the SOLOS team
-                </Text>
-              </div>
-            </Flex>
-            <div>
-              <Video videoSrc="https://palindrones.s3.amazonaws.com/1.mp4" hoverPlay/>
-            </div>
-          </SimpleGrid>
-
-          <Container p={'5rem'} bg="salmon" rounded={10} mb="10rem" id="mint">
-            <Heading as='h2' textAlign={'center'} mb="2rem" color="white" css={{'fontFamily': 'EB Garamond', 'fontSize': '2rem'}}>
-              Mint your Drone
+      <Container maxWidth="container.xl" pb="2rem">
+        <Flex alignItems={'center'} justifyContent='space-between'>
+          <Image src='/images/solos-logo.svg' objectFit='cover' width={100}/>
+          <Text color={'gray.400'}>
+            A <Link href='http://solos.so' target={'_blank'} textDecoration={'underline'} >solos.so</Link> project
+          </Text>
+        </Flex>
+      </Container>
+      <Container maxWidth="container.xl" pt={'10rem'} pb={'10rem'} backgroundImage={'images/header_1.jpg'} backgroundRepeat={'no-repeat'} backgroundSize="cover">
+        <Flex alignItems={'center'} flexDir={'column'}>
+          <Heading as='h1' color="white" css={{ 'textAlign': 'center', 'fontFamily': 'Abril Fatface', 'fontSize': '5rem !important'}}>
+            Johnny Defeo
+          </Heading>
+          <Text fontSize='2xl' color="white" css={{ 'textAlign': 'center'}}>
+            A highly unique audio-visual NFT project brought to you by the SOLOS team
+          </Text>
+        </Flex>
+      </Container>
+      <Container maxWidth="container.xl" >
+        <Container maxW="container.lg">
+          <Container p={'10rem'} id="mint">
+            <Heading as='h2' textAlign={'center'} mb="2rem" css={{'fontFamily': 'Abril Fatface', 'fontSize': '2rem'}}>
+              Mint your Piece
             </Heading>
             <Center>
               <Minter />
             </Center>
           </Container>
           
-          <Heading as='h3' pb={'20px'} css={{'fontFamily': 'EB Garamond', 'fontSize': '2rem'}}>
-            Meet the Drones
+          <Heading as='h3' pb={'3rem'} textAlign="center" css={{'fontFamily': 'Abril Fatface', 'fontSize': '2rem'}}>
+            Escape digital brutalism
           </Heading>
-
+          <Flex justifyContent={'center'} direction={'column'} height={'100%'}>
+            <Flex alignItems={'center'} justifyContent="center" mb={'2rem'}>
+              <Heading as='h3' size='lg' mr={'1rem'} width={'50%'} textAlign={'right'} css={{'fontFamily': 'Abril Fatface'}}>
+                3000px &times; 1500px
+              </Heading>
+              <Text width={'50%'} fontWeight={'semibold'}>
+                Header images
+              </Text>
+            </Flex>
+            <Flex alignItems={'center'} justifyContent="center" mb={'2rem'}>
+              <Heading as='h3' size='lg' mr={'1rem'} width={'50%'} textAlign={'right'} css={{'fontFamily': 'Abril Fatface'}}>
+                30+
+              </Heading>
+              <Text width={'50%'} fontWeight={'semibold'}>
+                Layers with size and positional variations
+              </Text>
+            </Flex>
+            <Flex alignItems={'center'} justifyContent="center" mb={'2rem'}>
+              <Heading as='h3' size='lg' mr={'1rem'} width={'50%'} textAlign={'right'} css={{'fontFamily': 'Abril Fatface'}}>
+                Billions
+              </Heading>
+              <Text width={'50%'} fontWeight={'semibold'}>
+                of possible combinations
+              </Text>
+            </Flex>
+            <Flex alignItems={'center'} justifyContent="center" mb={'2rem'}>
+              <Heading as='h3' size='lg' mr={'1rem'} width={'50%'} textAlign={'right'} css={{'fontFamily': 'Abril Fatface'}}>
+                232
+              </Heading>
+              <Text width={'50%'} fontWeight={'semibold'}>
+                NFTs for this limited drop
+              </Text>
+            </Flex>
+          </Flex>
           <Grid
-            templateColumns={['repeat(1, 0fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)', 'repeat(4, 1fr)', 'repeat(4, 1fr)']}
-            gap={0}
+            templateColumns={['repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(4, 1fr)']}
+            gap={0} mt="10rem"
           >
-            <GridItem rowSpan={1} colSpan={1}>
-              <Video videoSrc="https://palindrones.s3.amazonaws.com/palindrone-03-tn.mp4" hoverPlay/>
+            <GridItem rowSpan={1} colSpan={2} position="relative">
+              <Image src='/images/bio_pics.png' width="100%"/>
             </GridItem>
-            <GridItem rowSpan={1} colSpan={1}>
-              <Video videoSrc="https://palindrones.s3.amazonaws.com/palindrone-01-tn.mp4" hoverPlay/>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1}>
-              <Video videoSrc="https://palindrones.s3.amazonaws.com/palindrone-05-tn.mp4" hoverPlay/>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1}>
-              <Video videoSrc="https://palindrones.s3.amazonaws.com/palindrone-09-tn.mp4" hoverPlay/>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1}>
-              <Video videoSrc="https://palindrones.s3.amazonaws.com/palindrone-07-tn.mp4" hoverPlay/>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1}>
-              <Video videoSrc="https://palindrones.s3.amazonaws.com/palindrone-02-tn.mp4" hoverPlay/>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1}>
-              <Video videoSrc="https://palindrones.s3.amazonaws.com/palindrone-06-tn.mp4" hoverPlay/>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1}>
-              <Video videoSrc="https://palindrones.s3.amazonaws.com/palindrone-04-tn.mp4" hoverPlay/>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1}>
-              <Video videoSrc="https://palindrones.s3.amazonaws.com/palindrone-10-tn.mp4" hoverPlay/>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1}>
-              <Video videoSrc="https://palindrones.s3.amazonaws.com/palindrone-08-tn.mp4" hoverPlay/>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={2} bg='salmon'>
-              <Flex justifyContent={'center'} direction={'column'} height={'100%'}>
-                <Flex alignItems={'end'} mb={'0.5rem'}>
-                  <Heading as='h3' size='lg' mr={'1rem'} color='white' width={'30%'} textAlign={'right'} css={{'fontFamily': 'EB Garamond'}}>
-                    86
-                  </Heading>
-                  <Text width={'70%'} color={'white'} fontWeight={'semibold'}>
-                    Audio stems with matching visual traits
-                  </Text>
-                </Flex>
-                <Flex alignItems={'end'} mb={'0.5rem'}>
-                  <Heading as='h3' size='lg' mr={'1rem'} color='white' width={'30%'} textAlign={'right'} css={{'fontFamily': 'EB Garamond'}}>
-                    1:31
-                  </Heading>
-                  <Text width={'70%'} color={'white'} fontWeight={'semibold'}>
-                    second long looping videos
-                  </Text>
-                </Flex>
-                <Flex alignItems={'end'} mb={'0.5rem'}>
-                  <Heading as='h3' size='lg' mr={'1rem'} color='white' width={'30%'} textAlign={'right'} css={{'fontFamily': 'EB Garamond'}}>
-                    11,113,200
-                  </Heading>
-                  <Text width={'70%'} color={'white'} fontWeight={'semibold'}>
-                    possible combinations
-                  </Text>
-                </Flex>
-                <Flex alignItems={'end'} mb={'0.5rem'}>
-                  <Heading as='h3' size='lg' mr={'1rem'} color='white' width={'30%'} textAlign={'right'} css={{'fontFamily': 'EB Garamond'}}>
-                    323
-                  </Heading>
-                  <Text width={'70%'} color={'white'} fontWeight={'semibold'}>
-                    NFTs for this limited drop
-                  </Text>
-                </Flex>
-              </Flex>
-            </GridItem>
-          </Grid>
-          <Heading as='h3' pt="10rem" pb={'10px'} css={{'fontFamily': 'EB Garamond', 'fontSize': '2rem'}}>
-            Matched Audio Visual Features
-          </Heading>
-          <Text fontWeight={'semibold'}>
-            Over 65 audio loops combine to create more than 11 million possible outcomes.
-          </Text>
-          <Text fontWeight={'semibold'} pb={'20px'}>
-            Each loop is paired with a visual feature which also has a possible variant. Rare clips have special items.
-          </Text>
-          <Grid 
-            templateColumns={['repeat(2, 1fr)', 'repeat(3, 1fr)', 'repeat(3, 1fr)', 'repeat(6, 1fr)']}
-            gap={2}
-          >
-            <GridItem rowSpan={1} colSpan={1} paddingLeft={[25, 15]} paddingTop={[25, 15]} backgroundImage={'/images/layers.svg'}>
-              <Video videoSrc="https://palindrones.s3.amazonaws.com/bg.mp4" hoverPlay/>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1} paddingLeft={15} paddingTop={15} backgroundImage={'/images/layers.svg'}>
-              <Video videoSrc="https://palindrones.s3.amazonaws.com/fx.mp4" hoverPlay/>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1} paddingLeft={15} paddingTop={15} backgroundImage={'/images/layers.svg'}>
-              <Video videoSrc="https://palindrones.s3.amazonaws.com/pad.mp4" hoverPlay/>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1} paddingLeft={15} paddingTop={15} backgroundImage={'/images/layers.svg'}>
-              <Video videoSrc="https://palindrones.s3.amazonaws.com/rhythm.mp4" hoverPlay/>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1} paddingLeft={15} paddingTop={15} backgroundImage={'/images/layers.svg'}>
-              <Video videoSrc="https://palindrones.s3.amazonaws.com/melody.mp4" hoverPlay/>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1} paddingLeft={15} paddingTop={15} backgroundImage={'/images/layers.svg'}>
-              <Video videoSrc="https://palindrones.s3.amazonaws.com/incidental.mp4" hoverPlay/>
-            </GridItem>
-          </Grid>
-          <Heading as='h3' pt="10rem" pb={'20px'} css={{'fontFamily': 'EB Garamond', 'fontSize': '2rem'}}>
-            Meet the team
-          </Heading>
-          <Grid
-            templateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(4, 1fr)']}
-            gap={0}
-          >
-            <GridItem rowSpan={1} colSpan={1} bg="grey" position="relative">
-              <Image src='/images/jer.jpg' objectFit='cover'/>
-              <Image src='/images/jer_hover.jpg' transition={'opacity 0.3s'} _hover={{ opacity: 1 }} opacity={0} objectFit='cover' position="absolute" top="0" left="0"/>
-              <Text width={'100%'} fontSize="2xl" color={'white'} textAlign="center" fontWeight={'semibold'} position="absolute" bottom="10px">
-                Jer Palecek
+            <GridItem rowSpan={1} colSpan={2} position="relative">
+              <Heading as='h3' pl={['0', '0', '4rem']} css={{'fontFamily': 'Abril Fatface', 'fontSize': '2rem'}}>
+                About the Work
+              </Heading>
+              <Text width={'100%'} fontSize="xl" color={'black'} textAlign="left" pl={['0', '0', '4rem']} pb="1rem">
+                In my paintings I imagine a time that predates the daily rituals, bloody fights, healing ceremonies, and protective structures created by humans. Or maybe a time when all of us are gone and there are just herds of wild horses roaming the plains, coyotes skulking through the long shadows of day’s end, and mountain vistas devoid of vacation homes, forest roads, and ski lifts. I oscillate regularly, as I am sure many do, between wishing to save the world, to commit myself to the best course and fight for a better future, and wishing the planet would just hurry up and get it over with already. The scenes in my paintings could be omens, dreamy premonitions, or stolen glances of the inevitable-- a soft eyed look at our lands unpopulated, when the wild and untamed is punctuated with moments of serenity with no one there to see it. 
               </Text>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1} bg="grey" position="relative">
-              <Image src='/images/sam.jpg'objectFit='cover'/>
-              <Image src='/images/sam_hover.jpg' transition={'opacity 0.3s'} _hover={{ opacity: 1 }} opacity={0} objectFit='cover' position="absolute" top="0" left="0"/>
-              <Text width={'100%'} fontSize="2xl" color={'white'} textAlign="center" fontWeight={'semibold'} position="absolute" bottom="10px">
-                Sam Gittis
-              </Text>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1} bg="grey" position="relative">
-              <Image src='/images/jana.jpg'objectFit='cover'/>
-              <Image src='/images/jana_hover.jpg' transition={'opacity 0.3s'} _hover={{ opacity: 1 }} opacity={0} objectFit='cover' position="absolute" top="0" left="0"/>
-              <Text width={'100%'} fontSize="2xl" color={'white'} textAlign="center" fontWeight={'semibold'} position="absolute" bottom="10px">
-                Jana Paleckova
-              </Text>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1} bg="grey" position="relative">
-              <Image src='/images/ryan.jpg' objectFit='cover'/>
-              <Image src='/images/ryan_hover.jpg' transition={'opacity 0.3s'} _hover={{ opacity: 1 }} opacity={0} objectFit='cover' position="absolute" top="0" left="0"/>
-              <Text width={'100%'} fontSize="2xl" color={'white'} textAlign="center" fontWeight={'semibold'} position="absolute" bottom="10px">
-                Ryan Cole
-              </Text>
+              <Link href='https://www.instagram.com/johnnycakesdefeo/' target="_blank" color={'blue.400'} pl={['0', '0', '4rem']}>Artist Instagram</Link>
             </GridItem>
           </Grid>
         </Container>
