@@ -1,8 +1,19 @@
-import { Box, Button, Heading, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Flex,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalOverlay,
+  Stack,
+  Text,
+  useDisclosure,
+} from '@chakra-ui/react'
 import { ChainId, useEthers, useSendTransaction } from '@usedapp/core'
 import { providers, utils } from 'ethers'
 import React, { useEffect, useReducer, useState } from 'react'
-import { Layout } from '@create-nft-dao/shared'
 import {
   DEFAULT_TOKEN_SUPPLY,
   DEFAULT_TOKEN_PRICE,
@@ -26,6 +37,8 @@ import { GovernorInputs } from '../components/GovernorInputs'
 import { ClonesView } from '../components/ClonesView'
 import { Web3Provider } from '@ethersproject/providers'
 import { ChainSelector } from '../components/ChainSelector'
+import { Layout } from '../layout/Layout'
+import { FormSection } from '../layout/FormSection'
 
 /**
  * Constants & Helpers
@@ -58,6 +71,7 @@ const initialState: StateType = {
     maxMintsPerTx: DEFAULT_MAX_MINTS,
     creatorPercentage: DEFAULT_CREATOR_PERCENTAGE,
     startingBlock: 0,
+    creatorShareAddress: '',
     extraInitCallData: '',
   },
   governorConfig: {
@@ -67,7 +81,7 @@ const initialState: StateType = {
     votingPeriod: DEFAULT_VOTING_PERIOD,
     quorumNumerator: DEFAULT_QUORUM_NUMERATOR,
     timelockDelay: DEFAULT_TIMELOCK_DELAY,
-    upgradable: true,
+    upgradable: false,
   },
   mintingFilterConfig: {
     useMintingFilter: false,
@@ -85,6 +99,11 @@ function HomeIndex(): JSX.Element {
   const [state, dispatch] = useReducer(wizardReducer, initialState)
   const { account, chainId, library } = useEthers()
   const [clonesBlockNumber, setClonesBlockNumber] = useState(0)
+  const {
+    isOpen: isModalOpen,
+    onOpen: onModalOpen,
+    onClose: onModalClose,
+  } = useDisclosure()
   const [
     didSetStartBlockWithLatestChainValue,
     setDidSetStartBlockWithLatestChainValue,
@@ -99,6 +118,15 @@ function HomeIndex(): JSX.Element {
       setDidSetStartBlockWithLatestChainValue(true)
     }
   }, [getDefaultStartBlock(library)])
+
+  useEffect(() => {
+    if (!state.minterConfig.creatorShareAddress && account) {
+      onMinterConfigChange({
+        ...state.minterConfig,
+        creatorShareAddress: account,
+      })
+    }
+  }, [account])
 
   const isLocalChain =
     chainId === ChainId.Localhost || chainId === ChainId.Hardhat
@@ -127,8 +155,9 @@ function HomeIndex(): JSX.Element {
         type: 'SET_CLONES',
         clones: cloneResult.clones,
       })
+      onModalOpen()
     } catch (e) {
-      // TODO
+      window.alert(`Got an error: ${e.message}`)
     }
 
     dispatch({
@@ -189,52 +218,40 @@ function HomeIndex(): JSX.Element {
     })
   }
 
-  const layoutProps = {
-    title: 'Create NFT DAO: Wizard',
-  }
-  const navbarLinks = [
-    {
-      href: '/',
-      label: 'Home',
-    },
-  ]
-
   return (
-    <Layout customMeta={layoutProps} navbarLinks={navbarLinks}>
-      <Heading as="h1" mb="8" px={4}>
-        Create NFT DAO 🧙‍♀️
-      </Heading>
-      <Box maxWidth="container.sm" px={4}>
-        <Heading as="h2" mb={6} mt={6}>
-          1. Connect wallet & select chain
-        </Heading>
-        <ChainSelector />
+    <Layout>
+      <Box>
         <form onSubmit={deployClones}>
-          <TokenInputs
-            tokenConfig={state.tokenConfig}
-            onTokenConfigChange={onTokenConfigChange}
-            royaltiesConfig={state.royaltiesConfig}
-            onRoyaltiesConfigChange={onRoyaltiesConfigChange}
-          />
-          <MinterInputs
-            minterConfig={state.minterConfig}
-            onMinterConfigChange={onMinterConfigChange}
-            defaultStartBlock={getDefaultStartBlock(library)}
-          />
-
-          <MintingFilterInputs
-            values={state.mintingFilterConfig}
-            onValuesChange={onMintingFilterConfigChange}
-          />
-          <GovernorInputs
-            governorConfig={state.governorConfig}
-            onGovernorConfigChange={onGovernorConfigChange}
-          />
-          <Box>
+          <Stack spacing="25px">
+            <ChainSelector />
+            <TokenInputs
+              tokenConfig={state.tokenConfig}
+              onTokenConfigChange={onTokenConfigChange}
+              royaltiesConfig={state.royaltiesConfig}
+              onRoyaltiesConfigChange={onRoyaltiesConfigChange}
+            />
+            <FormSection>
+              <MinterInputs
+                minterConfig={state.minterConfig}
+                onMinterConfigChange={onMinterConfigChange}
+                defaultStartBlock={getDefaultStartBlock(library)}
+              />
+              <MintingFilterInputs
+                mt="26px"
+                values={state.mintingFilterConfig}
+                onValuesChange={onMintingFilterConfigChange}
+              />
+            </FormSection>
+            <GovernorInputs
+              governorConfig={state.governorConfig}
+              onGovernorConfigChange={onGovernorConfigChange}
+            />
+          </Stack>
+          <Flex>
             <Button
               name="submit"
               type="submit"
-              mt={8}
+              margin="40px auto"
               size="lg"
               colorScheme="teal"
               isLoading={state.isLoading}
@@ -242,19 +259,27 @@ function HomeIndex(): JSX.Element {
             >
               Deploy Clones
             </Button>
-          </Box>
+          </Flex>
         </form>
       </Box>
-      {state.clones !== null ? (
-        <ClonesView
-          clones={state.clones}
-          clonesBlockNumber={clonesBlockNumber}
-          governorName={state.governorConfig.name}
-          needsVerification={state.governorConfig.upgradable}
-        />
-      ) : (
-        <></>
-      )}
+      <Modal isOpen={isModalOpen} onClose={onModalClose}>
+        <ModalOverlay />
+        <ModalContent maxW="840px">
+          <ModalCloseButton />
+          <ModalBody>
+            {state.clones !== null ? (
+              <ClonesView
+                clones={state.clones}
+                clonesBlockNumber={clonesBlockNumber}
+                governorName={state.governorConfig.name}
+                needsVerification={state.governorConfig.upgradable}
+              />
+            ) : (
+              <></>
+            )}
+          </ModalBody>
+        </ModalContent>
+      </Modal>
       {chainId == ChainId.Localhost ? (
         <Box maxWidth="container.sm" mt={16} ms={4}>
           <Text mb="4">This button only works on a Local Chain.</Text>

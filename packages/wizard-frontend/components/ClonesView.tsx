@@ -1,8 +1,12 @@
-import { VStack, Heading, Text } from '@chakra-ui/react'
+import { ExternalLinkIcon } from '@chakra-ui/icons'
+import { VStack, Heading, Text, Box, Link } from '@chakra-ui/react'
 import { Table, Thead, Tbody, Tr, Td, Th } from '@chakra-ui/react'
-import { useEthers } from '@usedapp/core'
+import { getChainById, useEthers } from '@usedapp/core'
+import { isChainSupportedByTally } from '../lib/networks'
 import { ConnectToTally } from './ConnectToTally'
 import { EtherscanVerifyProxies } from './EtherscanVerifyProxies'
+import { FirstTd } from './FirstTd'
+import { ModalHeading } from './ModalHeading'
 
 export const ClonesView = ({
   clones,
@@ -12,29 +16,30 @@ export const ClonesView = ({
 }) => {
   const { chainId } = useEthers()
 
-  const tallyHeadingIndex = needsVerification ? '3' : '2'
+  const tallyHeadingIndex = needsVerification ? '3.' : '2.'
   return (
-    <VStack
-      alignItems="flex-start"
-      spacing={6}
-      maxWidth="container.sm"
-      p={4}
-      ms={4}
-      mt={8}
-      bg="gray.100"
-    >
-      <Heading as="h2" size="lg" mb={4}>
+    <Box mx={{ base: 0, md: '80px' }} mb="58px">
+      <Heading
+        as="h1"
+        size="xl"
+        textAlign="center"
+        fontSize="36px"
+        mt="38px"
+        mb="28px"
+      >
         Your NFT DAO is deployed!
       </Heading>
-      <VStack spacing={2} alignItems="flex-start">
-        <Heading as="h3" size="md">
-          1. Save your contract addresses
-        </Heading>
-        <Text color="gray.600" fontSize="sm">
+      <Text mb="10px" fontSize="14px">
+        Your contracts were successfully deployed to the{' '}
+        {getChainById(chainId).chainName} network.
+      </Text>
+      <Box mb="35px">
+        <ModalHeading number="1." text="Save your contract addresses" />
+        <Text color="brandGray.400" fontSize="12px" mt="3px">
           So you can easily find contracts later. You can always find them again
           on Etherscan, in the transaction you just sent.
         </Text>
-        <Table variant="unstyled" mt={8}>
+        <Table variant="modalTable" mt={8}>
           <Thead>
             <Tr>
               <Th>Contract</Th>
@@ -42,25 +47,28 @@ export const ClonesView = ({
             </Tr>
           </Thead>
           <Tbody>
-            <Tr>
-              <Td>NFT</Td>
-              <Td>{clones.token}</Td>
-            </Tr>
-            <Tr>
-              <Td>Minter</Td>
-              <Td>{clones.minter}</Td>
-            </Tr>
-            <Tr>
-              <Td>Governor</Td>
-              <Td>{clones.governor}</Td>
-            </Tr>
-            <Tr>
-              <Td>Timelock</Td>
-              <Td>{clones.timelock}</Td>
-            </Tr>
+            {[
+              ['NFT', clones.token],
+              ['Minter', clones.minter],
+              ['Governor', clones.governor],
+              ['Timelock', clones.timelock],
+            ].map((x) => (
+              <Tr key={x[0]}>
+                <FirstTd>{x[0]}</FirstTd>
+                <Td>
+                  <Link
+                    isExternal
+                    href={getChainById(chainId).getExplorerAddressLink(x[1])}
+                  >
+                    {x[1]}
+                    <ExternalLinkIcon mx="2px" />
+                  </Link>
+                </Td>
+              </Tr>
+            ))}
           </Tbody>
         </Table>
-      </VStack>
+      </Box>
       {needsVerification ? (
         <VStack spacing={4} alignItems="flex-start" width="100%">
           <Heading as="h3" size="md">
@@ -74,18 +82,30 @@ export const ClonesView = ({
       ) : (
         <></>
       )}
+
       <VStack spacing={4} alignItems="flex-start">
-        <Heading as="h3" size="md">
-          {tallyHeadingIndex}. Manage your DAO on Tally
-        </Heading>
-        <ConnectToTally
-          orgName={governorName}
-          tokenAddress={clones.token}
-          chainId={chainId}
-          startBlock={clonesBlockNumber}
-          governanceAddress={clones.governor}
+        <ModalHeading
+          number={tallyHeadingIndex}
+          text="Manage your DAO on Tally"
         />
+        {isChainSupportedByTally(chainId) ? (
+          <ConnectToTally
+            orgName={governorName}
+            tokenAddress={clones.token}
+            chainId={chainId}
+            startBlock={clonesBlockNumber}
+            governanceAddress={clones.governor}
+          />
+        ) : (
+          <Text fontSize="14px">
+            This network not yet supported by Tally, please send an email to{' '}
+            <Link isExternal href="mailto:hello@withTally.com">
+              hello@withTally.com
+            </Link>{' '}
+            to request support
+          </Text>
+        )}
       </VStack>
-    </VStack>
+    </Box>
   )
 }

@@ -1,19 +1,47 @@
 import { Box } from '@chakra-ui/layout'
+import {
+  Accordion,
+  AccordionButton,
+  Text,
+  AccordionItem,
+  AccordionPanel,
+} from '@chakra-ui/react'
 import { Select } from '@chakra-ui/select'
-import { ConnectWallet } from '@create-nft-dao/shared'
 import {
   ArbitrumRinkeby,
   getChainById,
   Mumbai,
   OptimismKovan,
-  Rinkeby,
   useEthers,
 } from '@usedapp/core'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { chainIdToContracts } from '../config'
+import { FormSection } from '../layout/FormSection'
+import { FormSectionContent } from '../layout/FormSectionContent'
+import { FormSectionHeader } from '../layout/FormSectionHeading'
+import { supportedNetworks } from '../lib/networks'
+import { ConnectWallet } from './ConnectWallet'
+import { ErrorMessage } from './ErrorMessage'
 
 export const ChainSelector = () => {
+  interface Error {
+    title: string
+    description: string
+  }
+
   const { chainId, library, account } = useEthers()
+  const [error, setError] = useState<Error>()
+
+  useEffect(() => {
+    if (supportedNetworks.find((n) => n.chainId === chainId)) {
+      setError(null)
+    } else {
+      setError({
+        title: 'Network not supported',
+        description: 'Please switch to one of the networks supported below',
+      })
+    }
+  }, [chainId])
 
   const getAddChainParams = (chainId: number) => {
     const ETHER = {
@@ -77,44 +105,71 @@ export const ChainSelector = () => {
   }
 
   return (
-    <Box>
-      {account ? (
-        <>
-          <Select
-            value={chainId}
-            onChange={(e) => {
-              e.preventDefault()
+    <FormSection>
+      <FormSectionHeader number="1" text="Connect wallet & select chain" />
+      <FormSectionContent>
+        {account ? (
+          <>
+            {error ? (
+              <ErrorMessage
+                title={error.title}
+                description={error.description}
+                mb="20px"
+              />
+            ) : (
+              ''
+            )}
+            <Select
+              value={chainId}
+              onChange={(e) => {
+                e.preventDefault()
 
-              const desiredChainId = Number.parseInt(e.target.value)
-              handleChangeNetwork(desiredChainId)
-            }}
-          >
-            <option value={Rinkeby.chainId}>Rinkeby</option>
-            <option value={OptimismKovan.chainId}>Optimistic Kovan</option>
-            <option value={ArbitrumRinkeby.chainId}>Arbitrum Rinkeby</option>
-            <option value={Mumbai.chainId}>Mumbai (Polygon testnet)</option>
-            <option disabled>Ethereum mainnet (coming soon)</option>
-            <option disabled>Optimism (coming soon)</option>
-            <option disabled>Arbitrum (coming soon)</option>
-            <option disabled>Polygon MATIC (coming soon)</option>
-          </Select>
+                const desiredChainId = Number.parseInt(e.target.value)
+                handleChangeNetwork(desiredChainId)
+              }}
+            >
+              <option disabled={!error}>Select a network</option>
 
-          <Box fontSize={10} mt={4}>
-            <Box>Chain: {getChainById(chainId).chainName}</Box>
-            <Box>
-              Deployer contract: {chainIdToContracts[chainId]?.deployerAddress}
-            </Box>
-            <Box>
-              SVGPlaceholder contract:{' '}
-              {chainIdToContracts[chainId]?.svgPlaceholderAddress}
-            </Box>
+              {supportedNetworks.map((n) => (
+                <option
+                  value={n.chainId}
+                  disabled={!n.isDeployed}
+                  key={n.chainId}
+                >
+                  {n.displayName}
+                  {n.isDeployed ? '' : ' (coming soon)'}
+                  {n.isTallySupported ? '' : ' (not yet supported on Tally)'}
+                </option>
+              ))}
+            </Select>
+
+            <Accordion mt="10px" allowToggle>
+              <AccordionItem border="none">
+                <AccordionButton w="auto" p="0">
+                  <Text fontSize="10px">Contracts info</Text>
+                </AccordionButton>
+                <AccordionPanel p="0">
+                  <Box fontSize={10} mt={4}>
+                    <Box>Chain: {getChainById(chainId).chainName}</Box>
+                    <Box>
+                      Deployer contract:{' '}
+                      {chainIdToContracts[chainId]?.deployerAddress}
+                    </Box>
+                    <Box>
+                      SVGPlaceholder contract:{' '}
+                      {chainIdToContracts[chainId]?.svgPlaceholderAddress}
+                    </Box>
+                  </Box>
+                </AccordionPanel>
+              </AccordionItem>
+            </Accordion>
+          </>
+        ) : (
+          <Box>
+            <ConnectWallet />
           </Box>
-        </>
-      ) : (
-        <Box>
-          <ConnectWallet />
-        </Box>
-      )}
-    </Box>
+        )}
+      </FormSectionContent>
+    </FormSection>
   )
 }

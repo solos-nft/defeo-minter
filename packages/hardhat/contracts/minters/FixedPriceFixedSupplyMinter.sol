@@ -14,9 +14,18 @@ abstract contract FixedPriceFixedSupplyMinter is ERC721Minter {
     bool public isTokenPriceLocked;
     bool public isOwnerMintLocked;
 
-    function __FixedPriceFixedSupplyMinter_init(uint256 maxTokens_, uint256 tokenPrice_) internal initializer {
+    function __FixedPriceFixedSupplyMinter_init(uint256 maxTokens_, uint256 tokenPrice_) internal onlyInitializing {
         maxTokens = maxTokens_;
         tokenPrice = tokenPrice_;
+    }
+
+    function _mint(address to, uint256 tokenId) internal {
+        require(
+            token.totalSupply() + 1 <= maxTokens,
+            "FixedPriceFixedSupplyMinter: Minting this many would exceed supply!"
+        );
+
+        token.mint(to, tokenId);
     }
 
     function setMaxTokens(uint256 maxTokens_) external onlyRole(CREATOR_ROLE) {
