@@ -1,7 +1,6 @@
 // import NextHead from 'next/head' // can come out when using layout
 import { Layout } from '@create-nft-dao/shared'
 import { Minter } from '../components/Minter'
-import { Video } from '../components/Video'
 import { Center, Container, Grid, GridItem, Heading, Text, Flex, Image, Link } from '@chakra-ui/react'
 import { NavbarLinks } from '../components/NavbarLinks'
 
@@ -27,7 +26,7 @@ const Mint = () => {
             Johnny Defeo
           </Heading>
           <Text fontSize='2xl' color="white" css={{ 'textAlign': 'center'}}>
-            A highly unique audio-visual NFT project brought to you by the SOLOS team
+            An exclusive painting NFT project brought to you by SOLOS
           </Text>
         </Flex>
       </Container>
@@ -48,7 +47,15 @@ const Mint = () => {
           <Flex justifyContent={'center'} direction={'column'} height={'100%'}>
             <Flex alignItems={'center'} justifyContent="center" mb={'2rem'}>
               <Heading as='h3' size='lg' mr={'1rem'} width={'50%'} textAlign={'right'} css={{'fontFamily': 'Abril Fatface'}}>
-                3000px &times; 1500px
+                232
+              </Heading>
+              <Text width={'50%'} fontWeight={'semibold'}>
+                NFTs for this limited drop
+              </Text>
+            </Flex>
+            <Flex alignItems={'center'} justifyContent="center" mb={'2rem'}>
+              <Heading as='h3' size='lg' mr={'1rem'} width={'50%'} textAlign={'right'} css={{'fontFamily': 'Abril Fatface'}}>
+                3000px &times; 1000px
               </Heading>
               <Text width={'50%'} fontWeight={'semibold'}>
                 Header images
@@ -59,7 +66,7 @@ const Mint = () => {
                 30+
               </Heading>
               <Text width={'50%'} fontWeight={'semibold'}>
-                Layers with size and positional variations
+                Layers with variations
               </Text>
             </Flex>
             <Flex alignItems={'center'} justifyContent="center" mb={'2rem'}>
@@ -72,13 +79,21 @@ const Mint = () => {
             </Flex>
             <Flex alignItems={'center'} justifyContent="center" mb={'2rem'}>
               <Heading as='h3' size='lg' mr={'1rem'} width={'50%'} textAlign={'right'} css={{'fontFamily': 'Abril Fatface'}}>
-                232
+                100%
               </Heading>
               <Text width={'50%'} fontWeight={'semibold'}>
-                NFTs for this limited drop
+                Hand painted artwork
               </Text>
             </Flex>
           </Flex>
+          <Container maxW="container.xl" pt="10rem">
+            <Image src='/images/render1.jpg' mb="2rem" borderRadius="10px" width="100%"/>
+            <Image src='/images/render2.jpg' mb="2rem" borderRadius="10px" width="100%"/>
+            <Image src='/images/render3.jpg' mb="2rem" borderRadius="10px" width="100%"/>
+            <Image src='/images/render4.jpg' mb="2rem" borderRadius="10px" width="100%"/>
+            <Image src='/images/render5.jpg' mb="2rem" borderRadius="10px" width="100%"/>
+            <Image src='/images/render6.jpg' mb="2rem" borderRadius="10px" width="100%"/>
+          </Container>
           <Grid
             templateColumns={['repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(4, 1fr)']}
             gap={0} mt="10rem"
@@ -96,6 +111,12 @@ const Mint = () => {
               <Link href='https://www.instagram.com/johnnycakesdefeo/' target="_blank" color={'blue.400'} pl={['0', '0', '4rem']}>Artist Instagram</Link>
             </GridItem>
           </Grid>
+          <Container maxW="container.lg" pt="10rem">
+            <Heading as='h3' textAlign="center" mb="1rem" css={{'fontFamily': 'Abril Fatface', 'fontSize': '2rem'}}>
+              Get to know Johnny
+            </Heading>
+            <iframe width="100%" height="500" src="https://www.youtube-nocookie.com/embed/q_eayEoL-Ro" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+          </Container>
         </Container>
       </Container>
     </Layout>
