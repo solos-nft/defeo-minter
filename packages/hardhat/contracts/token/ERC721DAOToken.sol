@@ -4,16 +4,16 @@
 
 pragma solidity ^0.8.6;
 
-import { ERC721CheckpointableUpgradable, ERC721EnumerableUpgradeable } from "./ERC721CheckpointableUpgradable.sol";
 import { AccessControlEnumerableUpgradeable } from "@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol";
 import { OwnableUpgradeable } from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import { ERC721VotesUpgradeable, ERC721Upgradeable } from "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/draft-ERC721VotesUpgradeable.sol";
 import { ERC2981ContractWideRoyalties } from "./ERC2981ContractWideRoyalties.sol";
 import { IRoyaltyInfo } from "./IRoyaltyInfo.sol";
 import { IProxyRegistry } from "../lib/IProxyRegistry.sol";
 import { ITokenURIDescriptor } from "./ITokenURIDescriptor.sol";
 
 contract ERC721DAOToken is
-    ERC721CheckpointableUpgradable,
+    ERC721VotesUpgradeable,
     ERC2981ContractWideRoyalties,
     AccessControlEnumerableUpgradeable,
     OwnableUpgradeable
@@ -50,11 +50,14 @@ contract ERC721DAOToken is
     event MinterChanged(address oldMinter, address newMinter);
     event TransfersDisabledChanged(bool transfersDisabled);
 
+    error RolesAssignmentArityMismatch();
+    error TransfersDisabled();
+
     function supportsInterface(bytes4 interfaceId)
         public
         view
         virtual
-        override(ERC721EnumerableUpgradeable, ERC2981ContractWideRoyalties, AccessControlEnumerableUpgradeable)
+        override(ERC721Upgradeable, ERC2981ContractWideRoyalties, AccessControlEnumerableUpgradeable)
         returns (bool)
     {
         return super.supportsInterface(interfaceId);
@@ -71,7 +74,9 @@ contract ERC721DAOToken is
         ITokenURIDescriptor tokenURIDescriptor_,
         address creator
     ) public initializer {
-        require(roles.length == rolesAssignees.length, "ERC721DAOToken::initializer: roles assignment arity mismatch");
+        if (roles.length != rolesAssignees.length) {
+            revert RolesAssignmentArityMismatch();
+        }
 
         // Owner is needed in order to edit collection details on marketplaces (e.g opensea / rarible)
         __Ownable_init_unchained();
@@ -197,59 +202,22 @@ contract ERC721DAOToken is
         address to,
         uint256 tokenId
     ) internal virtual override {
-        require(
-            isTransferMintOrBurn(from, to) || !transfersDisabled,
-            "ERC721DAOToken::_beforeTokenTransfer: transfers are disabled"
-        );
+        if (!isTransferMintOrBurn(from, to) && transfersDisabled) {
+            revert TransfersDisabled();
+        }
 
         super._beforeTokenTransfer(from, to, tokenId);
+    }
+
+    function isTransferMintOrBurn(address from, address to) internal pure returns (bool) {
+        return from == address(0) || to == address(0);
     }
 
     function _baseURI() internal view override returns (string memory) {
         return baseURI;
     }
 
-    function getMinterRole() external pure returns (bytes32) {
-        return MINTER_ROLE;
-    }
-
-    function getMinterAdminRole() external pure returns (bytes32) {
-        return MINTER_ADMIN_ROLE;
-    }
-
-    function getBaseURIRole() external pure returns (bytes32) {
-        return BASE_URI_ROLE;
-    }
-
-    function getBaseURIAdminRole() external pure returns (bytes32) {
-        return BASE_URI_ADMIN_ROLE;
-    }
-
-    function getAdminsAdminRole() external pure returns (bytes32) {
-        return ADMINS_ADMIN_ROLE;
-    }
-
-    function getRoyaltiesRole() external pure returns (bytes32) {
-        return ROYALTIES_ROLE;
-    }
-
-    function getRoyaltiesAdminRole() external pure returns (bytes32) {
-        return ROYALTIES_ADMIN_ROLE;
-    }
-
-    function getProxyRegistryRole() external pure returns (bytes32) {
-        return PROXY_REGISTRY_ROLE;
-    }
-
-    function getProxyRegistryAdminRole() external pure returns (bytes32) {
-        return PROXY_REGISTRY_ADMIN_ROLE;
-    }
-
-    function getTransfersRole() external pure returns (bytes32) {
-        return TRANSFERS_ROLE;
-    }
-
-    function getTransfersAdminRole() external pure returns (bytes32) {
-        return TRANSFERS_ADMIN_ROLE;
+    function totalSupply() public view returns (uint256) {
+        return _getTotalSupply();
     }
 }

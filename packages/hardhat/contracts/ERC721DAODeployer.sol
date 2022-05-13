@@ -43,6 +43,7 @@ contract ERC721DAODeployer is OwnableUpgradeable {
         uint256 startingBlock;
         uint256 creatorShares;
         uint256 daoShares;
+        address creatorShareAddress;
         bytes extraInitCallData;
     }
 
@@ -192,13 +193,7 @@ contract ERC721DAODeployer is OwnableUpgradeable {
         address creatorAddress,
         MintingFilter mintingFilter
     ) private {
-        address[] memory payees = new address[](2);
-        payees[0] = creatorAddress;
-        payees[1] = address(timelockClone);
-
-        uint256[] memory shares = new uint256[](2);
-        shares[0] = minterParams.creatorShares;
-        shares[1] = minterParams.daoShares;
+        (address[] memory payees, uint256[] memory shares) = createPayeesArrays(minterParams, timelockClone);
 
         minterClone.initialize(
             creatorAddress,
@@ -212,6 +207,31 @@ contract ERC721DAODeployer is OwnableUpgradeable {
             serviceFeeBasisPoints,
             owner()
         );
+    }
+
+    function createPayeesArrays(MinterParams calldata minterParams, ERC721Timelock timelockClone)
+        private
+        pure
+        returns (address[] memory payees, uint256[] memory shares)
+    {
+        if (minterParams.creatorShares == 0) {
+            payees = new address[](1);
+            shares = new uint256[](1);
+            payees[0] = address(timelockClone);
+            shares[0] = minterParams.daoShares;
+        } else if (minterParams.daoShares == 0) {
+            payees = new address[](1);
+            shares = new uint256[](1);
+            payees[0] = minterParams.creatorShareAddress;
+            shares[0] = minterParams.creatorShares;
+        } else {
+            payees = new address[](2);
+            shares = new uint256[](2);
+            payees[0] = minterParams.creatorShareAddress;
+            payees[1] = address(timelockClone);
+            shares[0] = minterParams.creatorShares;
+            shares[1] = minterParams.daoShares;
+        }
     }
 
     function cloneAndInitMintingFilter(MintingFilterParams calldata mintingFilterParams)
@@ -319,7 +339,7 @@ contract ERC721DAODeployer is OwnableUpgradeable {
 
     function createGovernorInstance(GovernorParams calldata governorParams) private returns (ERC721Governor) {
         if (governorParams.upgradable) {
-            return ERC721Governor(address(new ERC1967Proxy(address(governor), "")));
+            return ERC721Governor(payable(new ERC1967Proxy(address(governor), "")));
         }
         return ERC721Governor(payable(address(governor).clone()));
     }
@@ -348,19 +368,19 @@ contract ERC721DAODeployer is OwnableUpgradeable {
         ERC721DAOToken token_,
         address creatorAddress,
         ERC721Minter minterClone
-    ) private pure returns (bytes32[] memory, address[] memory) {
+    ) private view returns (bytes32[] memory, address[] memory) {
         bytes32[] memory roles = new bytes32[](11);
-        roles[0] = token_.getAdminsAdminRole();
-        roles[1] = token_.getMinterAdminRole();
-        roles[2] = token_.getBaseURIAdminRole();
-        roles[3] = token_.getRoyaltiesAdminRole();
-        roles[4] = token_.getBaseURIRole();
-        roles[5] = token_.getMinterRole();
-        roles[6] = token_.getRoyaltiesRole();
-        roles[7] = token_.getProxyRegistryRole();
-        roles[8] = token_.getProxyRegistryAdminRole();
-        roles[9] = token_.getTransfersRole();
-        roles[10] = token_.getTransfersAdminRole();
+        roles[0] = token_.ADMINS_ADMIN_ROLE();
+        roles[1] = token_.MINTER_ADMIN_ROLE();
+        roles[2] = token_.BASE_URI_ADMIN_ROLE();
+        roles[3] = token_.ROYALTIES_ADMIN_ROLE();
+        roles[4] = token_.BASE_URI_ROLE();
+        roles[5] = token_.MINTER_ROLE();
+        roles[6] = token_.ROYALTIES_ROLE();
+        roles[7] = token_.PROXY_REGISTRY_ROLE();
+        roles[8] = token_.PROXY_REGISTRY_ADMIN_ROLE();
+        roles[9] = token_.TRANSFERS_ROLE();
+        roles[10] = token_.TRANSFERS_ADMIN_ROLE();
 
         address[] memory rolesAssignees = new address[](11);
         rolesAssignees[0] = creatorAddress;

@@ -1,5 +1,5 @@
 import { ApolloClient, gql, InMemoryCache } from '@apollo/client'
-import { Box, Button, Link } from '@chakra-ui/react'
+import { Box, Button, Link, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { chainIdToTallyApiURIConfig, tallyWebBaseURI } from '../config'
 
@@ -34,6 +34,8 @@ export const ConnectToTally = ({
   })
 
   const createGovOnTally = async (params: TallyCreateGovParams) => {
+    console.log("Params: ", params)
+
     const createOrgResponse = await client.mutate({
       mutation: gql`
         mutation {
@@ -87,7 +89,7 @@ export const ConnectToTally = ({
         name: orgName,
         description: orgName,
         website: `http://${orgName}`,
-        icon: 'https://cdn-images-1.medium.com/max/92/1*q59g_GBPQ4c_y10ORUoKhg@2x.png',
+        icon: 'https://static.tally.xyz/3e2e982d-38fd-4f92-9a13-64952811ca80_original.png',
         color: '#A1DDF1',
         tokenAddress: tokenAddress,
         governanceAddress: governanceAddress,
@@ -104,18 +106,30 @@ export const ConnectToTally = ({
 
   return (
     <Box>
-      <Button colorScheme="teal" onClick={onClick} isLoading={isLoading}>
-        Connect to Tally
-      </Button>
       {isCreated ? (
         <Box>
-          Manage your DAO here:{' '}
-          <Link href={tallyUrl} isExternal>
+          <Text
+            fontSize="10px"
+            textTransform="uppercase"
+            fontWeight="800"
+            color="brandGray.400"
+          >
+            Manage your DAO here:
+          </Text>{' '}
+          <Link
+            href={tallyUrl}
+            isExternal
+            fontSize="14px"
+            color="brand.300"
+            overflowWrap="anywhere"
+          >
             {tallyUrl}
           </Link>
         </Box>
       ) : (
-        <></>
+        <Button colorScheme="teal" onClick={onClick} isLoading={isLoading}>
+          Connect to Tally
+        </Button>
       )}
     </Box>
   )

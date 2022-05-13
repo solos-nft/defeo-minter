@@ -58,7 +58,7 @@ describe("FixedPriceSpecificIDMinter", () => {
   it("does not let init be called again", async () => {
     await expect(
       minter.connect(deployer).init(MAX_TOKENS, TOKEN_PRICE)
-    ).to.be.revertedWith("Initializable: contract is already initialized");
+    ).to.be.revertedWith("Initializable: contract is not initializing");
   });
 
   describe("Before sale is active", async () => {
@@ -112,7 +112,7 @@ describe("FixedPriceSpecificIDMinter", () => {
       await expect(
         minter.connect(user).mint(MAX_TOKENS, { value: TOKEN_PRICE })
       ).to.be.revertedWith(
-        "FixedPriceSpecificIDMinter: Minting this many would exceed supply!"
+        "FixedPriceFixedSupplyMinter: Minting this many would exceed supply!"
       );
     });
 
@@ -183,7 +183,7 @@ describe("FixedPriceSpecificIDMinter", () => {
       await expect(
         minter.connect(creator).ownerMint(user.address, MAX_TOKENS)
       ).to.be.revertedWith(
-        "FixedPriceSpecificIDMinter: Minting this many would exceed supply!"
+        "FixedPriceFixedSupplyMinter: Minting this many would exceed supply!"
       );
     });
 
