@@ -2,6 +2,9 @@
   "name": "@create-nft-dao/admin",
   "license": "MIT",
   "version": "1.0.0",
+  "engines" : { 
+    "node" : ">=14.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
