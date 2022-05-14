@@ -115,7 +115,7 @@ const Mint = () => {
             <Heading as='h3' textAlign="center" mb="1rem" css={{'fontFamily': 'Abril Fatface', 'fontSize': '2rem'}}>
               Get to know Johnny
             </Heading>
-            <iframe width="100%" height="500" src="https://www.youtube-nocookie.com/embed/q_eayEoL-Ro" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+            <iframe width="100%" height="500" src="https://www.youtube-nocookie.com/embed/q_eayEoL-Ro" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen={true}></iframe>
           </Container>
         </Container>
       </Container>
