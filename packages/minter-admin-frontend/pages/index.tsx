@@ -6,8 +6,8 @@ import { NavbarLinks } from '../components/NavbarLinks'
 
 const Mint = () => {
   const layoutProps = {
-    title: 'Solos – Palindrones',
-    description: 'Palindrones is an audio-visual collage NFT project from the SOLOS team. Audio stems are matched to visual traits and exported into a 1:31 long drone track + animation.'
+    title: 'Solos | Horizons by Johnny Defeo',
+    description: 'The scenes in my paintings could be omens, dreamy premonitions, or stolen glances of the inevitable-- a soft eyed look at our lands unpopulated, when the wild and untamed is punctuated with moments of serenity with no one there to see it.'
   }
 
   return (
