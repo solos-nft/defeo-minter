@@ -20,9 +20,9 @@ export const Head = ({
   customMeta?: MetaProps
 }): JSX.Element => {
   const meta: MetaProps = {
-    title: 'Create NFT DAO',
+    title: 'Solos | Horizons by Johnny Defeo',
     type: 'website',
-    description: '',
+    description: 'Scenes which could be omens, dreamy premonitions, or stolen glances of the inevitable...',
     ...customMeta,
   }
 
@@ -31,7 +31,7 @@ export const Head = ({
       <title>{meta.title}</title>
       <meta content={meta.description} name="description" />
       <meta property="og:type" content={meta.type} />
-      <meta property="og:site_name" content="Create NFT DAO" />
+      <meta property="og:site_name" content="Solos | Horizons by Johnny Defeo" />
       <meta property="og:description" content={meta.description} />
       <meta property="og:title" content={meta.title} />
       <meta name="twitter:title" content={meta.title} />
