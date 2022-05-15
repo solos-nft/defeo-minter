@@ -1,6 +1,6 @@
 export const NavbarLinks = [
-  {
-    href: '/#mint',
-    label: 'Mint',
-  }
+  // {
+  //   href: '/#mint',
+  //   label: 'Mint',
+  // }
 ]

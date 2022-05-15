@@ -32,7 +32,7 @@ const Mint = () => {
       </Container>
       <Container maxWidth="container.xl" >
         <Container maxW="container.lg">
-          <Container p={'10rem'} id="mint">
+          <Container p={'10rem'} id="mint" display={'none'}>
             <Heading as='h2' textAlign={'center'} mb="2rem" css={{'fontFamily': 'Abril Fatface', 'fontSize': '2rem'}}>
               Mint your Piece
             </Heading>
@@ -41,7 +41,7 @@ const Mint = () => {
             </Center>
           </Container>
           
-          <Heading as='h3' pb={'3rem'} textAlign="center" css={{'fontFamily': 'Abril Fatface', 'fontSize': '2rem'}}>
+          <Heading as='h3' pb={'3rem'} pt="10rem" textAlign="center" css={{'fontFamily': 'Abril Fatface', 'fontSize': '2rem'}}>
             Escape digital brutalism
           </Heading>
           <Flex justifyContent={'center'} direction={'column'} height={'100%'}>
@@ -111,6 +111,12 @@ const Mint = () => {
               <Link href='https://www.instagram.com/johnnycakesdefeo/' target="_blank" color={'blue.400'} pl={['0', '0', '4rem']}>Artist Instagram</Link>
             </GridItem>
           </Grid>
+          <Container maxW="container.lg" pt="10rem">
+            <Heading as='h3' textAlign="center" mb="1rem" css={{'fontFamily': 'Abril Fatface', 'fontSize': '2rem'}}>
+              5% of all proceeds go to&nbsp;
+              <Link href="https://www.nature.org/en-us/" target="_blank" color={'blue.400'}>Nature Conservancy</Link>
+            </Heading>
+          </Container>
           <Container maxW="container.lg" pt="10rem">
             <Heading as='h3' textAlign="center" mb="1rem" css={{'fontFamily': 'Abril Fatface', 'fontSize': '2rem'}}>
               Get to know Johnny
