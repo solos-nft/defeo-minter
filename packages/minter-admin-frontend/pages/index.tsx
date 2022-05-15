@@ -82,7 +82,7 @@ const Mint = () => {
                 100%
               </Heading>
               <Text width={'50%'} fontWeight={'semibold'}>
-                Hand-painted artwork
+                Hand painted artwork
               </Text>
             </Flex>
           </Flex>
