@@ -21,7 +21,7 @@ type SupportedChains =
   | ChainId.Mumbai
   | ChainId.Mainnet
 
-export const CHAIN_ID: SupportedChains = ChainId.Rinkeby
+export const CHAIN_ID: SupportedChains = ChainId.Mainnet
 
 const allConfigs: Record<SupportedChains, ContractsConfig> = {
   [ChainId.Localhost]: {
@@ -34,10 +34,10 @@ const allConfigs: Record<SupportedChains, ContractsConfig> = {
   },
   [ChainId.Mainnet]: {
     deployerAddress: '0x473cCDb5B5C6378572dcd14F56BFc05220eEBD74',
-    tokenAddress: '',
-    minterAddress: '',
-    governorAddress: '',
-    timelockAddress: '',
+    tokenAddress: '0xB5b34CE80acb78400c2B922607896C6d7354C89a',
+    minterAddress: '0x15A19D8f22f70afAF7D31b69DB631ffDE96642Bc',
+    governorAddress: '0x31c269D0A76d3c806e50A671734628C939D9902e',
+    timelockAddress: '0xF85763EA92FDe5F6AeBA36586A82FFd9919cFcFd',
     minterType: MinterType.FixedPriceSequentialMinter,
   },
   [ChainId.Rinkeby]: {
