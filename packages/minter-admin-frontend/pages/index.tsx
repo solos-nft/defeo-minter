@@ -32,7 +32,7 @@ const Mint = () => {
       </Container>
       <Container maxWidth="container.xl" >
         <Container maxW="container.lg">
-          <Container p={'10rem'} id="mint" display={'none'}>
+          <Container p={'10rem'} id="mint">
             <Heading as='h2' textAlign={'center'} mb="2rem" css={{'fontFamily': 'Abril Fatface', 'fontSize': '2rem'}}>
               Mint your Piece
             </Heading>
@@ -41,7 +41,7 @@ const Mint = () => {
             </Center>
           </Container>
           
-          <Heading as='h3' pb={'3rem'} pt="10rem" textAlign="center" css={{'fontFamily': 'Abril Fatface', 'fontSize': '2rem'}}>
+          <Heading as='h3' pb={'3rem'} textAlign="center" css={{'fontFamily': 'Abril Fatface', 'fontSize': '2rem'}}>
             Escape digital brutalism
           </Heading>
           <Flex justifyContent={'center'} direction={'column'} height={'100%'}>
