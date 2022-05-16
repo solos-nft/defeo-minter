@@ -105,10 +105,10 @@ const Mint = () => {
               <Heading as='h3' pl={['0', '0', '4rem']} css={{'fontFamily': 'Abril Fatface', 'fontSize': '2rem'}}>
                 About the Work
               </Heading>
-              <Text width={'100%'} fontSize="xl" color={'black'} textAlign="left" pl={['0', '0', '4rem']} pb="1rem">
+              <Text width={'100%'} fontSize="xl" color={'black'} textAlign="left" pl={['0', '0', '4rem']} pb="2rem">
                 In my paintings I imagine a time that predates the daily rituals, bloody fights, healing ceremonies, and protective structures created by humans. Or maybe a time when all of us are gone and there are just herds of wild horses roaming the plains, coyotes skulking through the long shadows of day’s end, and mountain vistas devoid of vacation homes, forest roads, and ski lifts. I oscillate regularly, as I am sure many do, between wishing to save the world, to commit myself to the best course and fight for a better future, and wishing the planet would just hurry up and get it over with already. The scenes in my paintings could be omens, dreamy premonitions, or stolen glances of the inevitable-- a soft eyed look at our lands unpopulated, when the wild and untamed is punctuated with moments of serenity with no one there to see it. 
               </Text>
-              <Link href='https://www.instagram.com/johnnycakesdefeo/' target="_blank" color={'blue.400'} pl={['0', '0', '4rem']}>Artist Instagram</Link>
+              <Link href='https://www.instagram.com/johnnycakesdefeo/' target="_blank" color={'white'} background={'blue.400'} ml={['0', '0', '4rem']} padding={['1rem']} borderRadius="5px">Artist Instagram</Link>
             </GridItem>
           </Grid>
           <Container maxW="container.lg" pt="10rem">
