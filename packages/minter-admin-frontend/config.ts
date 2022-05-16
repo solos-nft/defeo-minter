@@ -21,7 +21,7 @@ type SupportedChains =
   | ChainId.Mumbai
   | ChainId.Mainnet
 
-export const CHAIN_ID: SupportedChains = ChainId.Rinkeby
+export const CHAIN_ID: SupportedChains = ChainId.Mainnet
 
 const allConfigs: Record<SupportedChains, ContractsConfig> = {
   [ChainId.Localhost]: {
@@ -34,18 +34,18 @@ const allConfigs: Record<SupportedChains, ContractsConfig> = {
   },
   [ChainId.Mainnet]: {
     deployerAddress: '0x473cCDb5B5C6378572dcd14F56BFc05220eEBD74',
-    tokenAddress: '',
-    minterAddress: '',
-    governorAddress: '',
-    timelockAddress: '',
+    tokenAddress: '0xB5b34CE80acb78400c2B922607896C6d7354C89a',
+    minterAddress: '0x15A19D8f22f70afAF7D31b69DB631ffDE96642Bc',
+    governorAddress: '0x31c269D0A76d3c806e50A671734628C939D9902e',
+    timelockAddress: '0xF85763EA92FDe5F6AeBA36586A82FFd9919cFcFd',
     minterType: MinterType.FixedPriceSequentialMinter,
   },
   [ChainId.Rinkeby]: {
     deployerAddress: '0xA74d716054120f75c86dC3E2de1E879926657C1f',
-    tokenAddress: '0xCc1c746d03c576a6adBecA5539ef4fd55407206F',
-    minterAddress: '0xd71451F4f1c040d74c506f61ED011814A081e7Fe',
-    governorAddress: '0xc5FD13678d71EEd122c1c39d32f6d4F8A816592B',
-    timelockAddress: '0xF30C873F74f63e217001afe7bF4731C2E9709049',
+    tokenAddress: '0x47e902ae992Cb68647da1CA6895EC3518a024f14',
+    minterAddress: '0xa33f07816a353d3F2995726AAAB62d5026ffFc56',
+    governorAddress: '0x5213C5dDdEf8F23DC9cB7189C4f6Db367f1b0De2',
+    timelockAddress: '0x68fAdA21aEeB94858ed3e1F5408567a2954F94f3',
     minterType: MinterType.FixedPriceSequentialMinter,
   },
   [ChainId.OptimismKovan]: {
